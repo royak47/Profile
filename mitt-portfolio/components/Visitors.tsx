@@ -1,24 +1,23 @@
 "use client";
 
 import { useCounter } from "@/lib/useCounter";
-import { Prompt } from "./Hero";
 
 export default function Visitors() {
   const { today, total, loading, offline } = useCounter();
 
   return (
-    <section aria-label="Visitor counter">
-      <Prompt cmd="visitors --live" />
-      <div className="mt-3 grid grid-cols-2 gap-4">
+    <div className="rounded-2xl border border-border bg-white p-6">
+      <p className="text-sm font-medium text-muted">Visitors, live</p>
+      <div className="mt-4 grid grid-cols-2 gap-4">
         <Stat label="today" value={today} loading={loading} />
         <Stat label="all-time" value={total} loading={loading} />
       </div>
-      {offline && (
-        <p className="mt-2 font-mono text-[11px] text-muted">
-          counting API unreachable — showing a local, browser-only tally.
-        </p>
-      )}
-    </section>
+      <p className="mt-4 border-t border-border pt-3 text-xs text-muted">
+        {offline
+          ? "counting service unreachable — showing a local tally."
+          : "counted once per visitor session."}
+      </p>
+    </div>
   );
 }
 
@@ -32,11 +31,11 @@ function Stat({
   loading: boolean;
 }) {
   return (
-    <div className="rounded-md border border-panelborder bg-bg/60 p-4 text-center">
-      <div className="font-mono text-2xl font-bold tabular-nums text-amber">
+    <div>
+      <div className="font-mono text-3xl font-bold tabular-nums text-ink">
         {loading ? "···" : value?.toLocaleString() ?? "—"}
       </div>
-      <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">
+      <div className="mt-0.5 text-xs uppercase tracking-wide text-muted">
         {label}
       </div>
     </div>

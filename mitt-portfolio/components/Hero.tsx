@@ -1,66 +1,89 @@
 "use client";
 
-import { PROFILE } from "@/lib/constants";
-import { useTypewriter } from "@/lib/useTypewriter";
+import { PROFILE, SOCIALS } from "@/lib/constants";
+import { useDecimalAge } from "@/lib/useElapsed";
+import { Instagram, Send, Mail } from "lucide-react";
+
+const ICONS = { instagram: Instagram, telegram: Send, mail: Mail };
 
 export default function Hero() {
-  const line1 = useTypewriter("whoami", 55, 200);
-  const line2 = useTypewriter(
-    `${PROFILE.name} — ${PROFILE.role}, ${PROFILE.location}`,
-    18,
-    900
-  );
-  const line3 = useTypewriter("status", 55, 1600);
-  const line4 = useTypewriter(PROFILE.tagline, 16, 2300);
+  const age = useDecimalAge(PROFILE.dob);
+  const firstName = PROFILE.name.split(" ")[0];
 
   return (
-    <section aria-label="Introduction">
-      <Prompt cmd={line1.output} showCursor={!line1.done} />
-      {line1.done && (
-        <p className="mt-1 pl-5 font-mono text-2xl font-bold text-ink sm:text-3xl">
-          {line2.output}
-          {!line2.done && <BlinkCursor />}
-        </p>
-      )}
+    <section className="animate-fadein">
+      {/* avatar */}
+      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-ink font-display text-lg font-bold text-white">
+        {initials(PROFILE.name)}
+      </div>
 
-      {line2.done && (
-        <div className="mt-6">
-          <Prompt cmd={line3.output} showCursor={!line3.done} />
-        </div>
-      )}
-      {line3.done && (
-        <p className="mt-1 flex items-center gap-2 pl-5 font-mono text-sm text-muted">
-          <span className="h-2 w-2 rounded-full bg-amber shadow-[0_0_8px_2px_rgba(255,179,0,0.6)]" />
-          <span>
-            online — {line4.output}
-            {!line4.done && <BlinkCursor />}
-          </span>
+      <h1 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+        hey, {firstName} here
+      </h1>
+
+      <p className="mt-3 font-mono text-base text-muted sm:text-lg">
+        been on this planet for{" "}
+        <span className="tabular-nums text-ink">{age}</span> years
+      </p>
+
+      <div className="mt-8 max-w-xl space-y-4 text-lg leading-relaxed text-ink/90">
+        <p>
+          I'm {firstName} — {PROFILE.role.toLowerCase()} based in{" "}
+          {PROFILE.location}. {PROFILE.tagline}
         </p>
-      )}
+        <p>
+          You can find me on{" "}
+          <a
+            className="inline-link"
+            href={SOCIALS[0].href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+          , message me on{" "}
+          <a
+            className="inline-link"
+            href={SOCIALS[1].href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Telegram
+          </a>
+          , or just{" "}
+          <a className="inline-link" href={`mailto:${PROFILE.email}`}>
+            send an email
+          </a>
+          .
+        </p>
+      </div>
+
+      {/* social icon row */}
+      <div className="mt-7 flex items-center gap-4">
+        {SOCIALS.map((s) => {
+          const Icon = ICONS[s.label as keyof typeof ICONS];
+          return (
+            <a
+              key={s.label}
+              href={s.href}
+              target={s.label === "mail" ? undefined : "_blank"}
+              rel="noopener noreferrer"
+              aria-label={s.label}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-ink transition-colors hover:border-accent hover:bg-accentSoft hover:text-accent"
+            >
+              <Icon size={18} strokeWidth={1.8} />
+            </a>
+          );
+        })}
+      </div>
     </section>
   );
 }
 
-export function Prompt({
-  cmd,
-  showCursor = false,
-}: {
-  cmd: string;
-  showCursor?: boolean;
-}) {
-  return (
-    <p className="font-mono text-sm text-amber">
-      <span className="text-muted">mitt@dev:~$</span> {cmd}
-      {showCursor && <BlinkCursor />}
-    </p>
-  );
-}
-
-export function BlinkCursor() {
-  return (
-    <span
-      className="ml-0.5 inline-block h-4 w-[2px] translate-y-0.5 animate-blink bg-amber align-middle"
-      aria-hidden="true"
-    />
-  );
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((p) => p[0])
+    .join("")
+    .toUpperCase();
 }
