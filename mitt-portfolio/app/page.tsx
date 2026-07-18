@@ -1,24 +1,17 @@
-import TerminalWindow from "@/components/TerminalWindow";
 import Hero from "@/components/Hero";
-import Uptime from "@/components/Uptime";
-import About from "@/components/About";
-import Socials from "@/components/Socials";
-import Visitors from "@/components/Visitors";
+import Stats from "@/components/Stats";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-bg">
-      <TerminalWindow>
+      <div className="mx-auto max-w-2xl px-6 py-16 sm:py-24">
         <Hero />
-        <Uptime />
-        <About />
-        <Socials />
-        <Visitors />
+        <Stats />
         <Contact />
         <Footer />
-      </TerminalWindow>
+      </div>
     </main>
   );
 }
