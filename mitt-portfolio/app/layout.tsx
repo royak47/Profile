@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Inter } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -9,21 +16,14 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "Mitt Ydv — Developer & Creator",
+  title: "Mitt Ydv",
   description:
-    "Mitt Ydv's personal terminal — a live status page with real-time uptime, socials, and visitor stats.",
+    "Mitt Ydv — Developer & Creator. A personal site with a live age counter and visitor stats.",
   openGraph: {
-    title: "Mitt Ydv — Developer & Creator",
+    title: "Mitt Ydv",
     description:
-      "Mitt Ydv's personal terminal — a live status page with real-time uptime, socials, and visitor stats.",
+      "Mitt Ydv — Developer & Creator. A personal site with a live age counter and visitor stats.",
     type: "website",
   },
 };
@@ -34,11 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased">
-        <div className="scanlines" aria-hidden="true" />
-        {children}
-      </body>
+    <html lang="en" className={`${jakarta.variable} ${jetbrainsMono.variable}`}>
+      <body className="font-display antialiased">{children}</body>
     </html>
   );
 }
