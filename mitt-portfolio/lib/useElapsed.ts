@@ -31,6 +31,36 @@ export function useElapsed(fromISO: string): Elapsed {
   return elapsed;
 }
 
+const MS_PER_YEAR = 365.2425 * 24 * 60 * 60 * 1000;
+
+/**
+ * Returns age as a continuously-ticking decimal number of years, e.g.
+ * "27.842918273" — updates on an animation-style interval so the last
+ * few digits visibly tick upward.
+ */
+export function useDecimalAge(fromISO: string, decimals = 9): string {
+  const [value, setValue] = useState(() => decimalYears(fromISO, decimals));
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const intervalMs = prefersReduced ? 1000 : 80;
+
+    const id = setInterval(() => {
+      setValue(decimalYears(fromISO, decimals));
+    }, intervalMs);
+    return () => clearInterval(id);
+  }, [fromISO, decimals]);
+
+  return value;
+}
+
+function decimalYears(fromISO: string, decimals: number): string {
+  const ms = Date.now() - new Date(fromISO).getTime();
+  return (ms / MS_PER_YEAR).toFixed(decimals);
+}
+
 function calculate(fromISO: string): Elapsed {
   const from = new Date(fromISO);
   const now = new Date();
