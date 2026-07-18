@@ -8,36 +8,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: "#0F0D0B",
-        panel: "#17140F",
-        panelborder: "#2A241A",
-        amber: "#FFB300",
-        amberdim: "#8A6A1F",
-        ink: "#F5EFE3",
-        muted: "#8A8272",
+        bg: "#FFFFFF",
+        ink: "#0A0A0A",
+        muted: "#6B7280",
+        subtle: "#F4F4F5",
+        border: "#E5E7EB",
+        accent: "#2563EB",
+        accentSoft: "#EEF2FF",
       },
       fontFamily: {
+        display: ["var(--font-jakarta)", "ui-sans-serif", "system-ui"],
         mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
-        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui"],
       },
       keyframes: {
-        blink: {
-          "0%, 49%": { opacity: "1" },
-          "50%, 100%": { opacity: "0" },
-        },
         fadein: {
-          from: { opacity: "0", transform: "translateY(6px)" },
+          from: { opacity: "0", transform: "translateY(8px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        scan: {
-          "0%": { backgroundPosition: "0 0" },
-          "100%": { backgroundPosition: "0 100%" },
+        pulse2: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.4" },
         },
       },
       animation: {
-        blink: "blink 1s step-end infinite",
-        fadein: "fadein 0.5s ease-out forwards",
-        scan: "scan 12s linear infinite",
+        fadein: "fadein 0.6s ease-out forwards",
+        pulse2: "pulse2 1.8s ease-in-out infinite",
       },
     },
   },
