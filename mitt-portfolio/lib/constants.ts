@@ -1,19 +1,28 @@
 // ─────────────────────────────────────────────────────────────
-// Edit this file to update your info. Nothing else needs touching.
+// Personal Portfolio Configuration
 // ─────────────────────────────────────────────────────────────
 
 export const PROFILE = {
   name: "Mitt Ydv",
   handle: "mitt_ydv",
-  role: "Developer & Creator",
-  tagline: "I build things for the internet, and occasionally break them on purpose.",
-  location: "India",
-  // Format: YYYY-MM-DDTHH:mm:ss (birth time unknown, so midnight is used)
+
+  role: "Artist • AI Creator • Web Developer",
+
+  tagline:
+    "Creating Music, AI Experiences & Modern Web Projects.",
+
+  location: "Rajasthan, India",
+
   dob: "1998-10-13T00:00:00",
+
   about: [
-    "I'm Mitt — I write code, ship small projects, and share the process online. This site doubles as my terminal: everything below is a live command, not a static page.",
-    "Currently exploring web development, open-source tooling, and whatever breaks my sleep schedule this week. Replace this paragraph with your real bio in lib/constants.ts.",
+    "Hi, I'm Mitt Ydv — an independent artist, AI creator, and web developer from India. I love building modern websites, experimenting with artificial intelligence, and creating unique digital experiences.",
+
+    "From music production and cinematic AI visuals to full-stack web development, I enjoy turning creative ideas into reality. Every project is an opportunity to learn, innovate, and create something memorable.",
+
+    "Welcome to my digital space. Explore my work, connect with me, and let's build something amazing together.",
   ],
+
   email: "nopaidorganization@gmail.com",
 };
 
@@ -22,24 +31,20 @@ export const SOCIALS = [
     label: "instagram",
     display: "@mitt_ydv",
     href: "https://instagram.com/mitt_ydv",
-    hint: "photos, reels, occasional chaos",
+    hint: "Music • AI • Lifestyle",
   },
   {
     label: "telegram",
     display: "@mitt_ydv",
     href: "https://t.me/mitt_ydv",
-    hint: "fastest way to reach me",
+    hint: "Community & Updates",
   },
   {
-    label: "mail",
+    label: "email",
     display: "nopaidorganization@gmail.com",
     href: "mailto:nopaidorganization@gmail.com",
-    hint: "for work & collabs",
+    hint: "Business & Collaborations",
   },
 ];
 
-// Visitor counter uses countapi.xyz — a free, key-less counting API.
-// No signup needed. If you want a more production-grade counter later,
-// swap the implementation in lib/useCounter.ts for counterapi.dev (needs
-// a free account) or your own API route backed by a database.
-export const COUNTER_NAMESPACE = "mitt-ydv-dev-portfolio-9f2k";
+export const COUNTER_NAMESPACE = "mitt-ydv-official-portfolio";
