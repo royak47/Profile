@@ -16,24 +16,26 @@ export default function Uptime() {
   const elapsed = useElapsed(PROFILE.dob);
 
   return (
-    <div className="rounded-2xl border border-border bg-white p-6">
-      <p className="text-sm font-medium text-muted">Age, live</p>
+    <div className="rounded-2xl border border-border bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900">
+      <p className="text-sm font-medium text-muted dark:text-neutral-400">
+        Age, live
+      </p>
       <div className="mt-4 grid grid-cols-3 gap-x-2 gap-y-4">
         {UNITS.map((u) => (
           <div key={u.key}>
             <div
-              className="font-mono text-2xl font-bold tabular-nums text-ink"
+              className="font-mono text-2xl font-bold tabular-nums text-ink dark:text-white"
               aria-live="polite"
             >
               {String(elapsed[u.key]).padStart(2, "0")}
             </div>
-            <div className="mt-0.5 text-xs uppercase tracking-wide text-muted">
+            <div className="mt-0.5 text-xs uppercase tracking-wide text-muted dark:text-neutral-400">
               {u.label}
             </div>
           </div>
         ))}
       </div>
-      <p className="mt-4 border-t border-border pt-3 text-xs text-muted">
+      <p className="mt-4 border-t border-border pt-3 text-xs text-muted dark:border-neutral-800 dark:text-neutral-400">
         born 13 Oct 1998 — ticking every second.
       </p>
     </div>
