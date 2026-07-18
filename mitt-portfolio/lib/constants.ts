@@ -8,19 +8,18 @@ export const PROFILE = {
 
   role: "Artist • AI Creator • Web Developer",
 
-  tagline:
-    "Creating Music, AI Experiences & Modern Web Projects.",
+  tagline: "Building Modern Websites, AI Experiences & Creative Content.",
 
   location: "Rajasthan, India",
 
   dob: "1998-10-13T00:00:00",
 
   about: [
-    "Hi, I'm Mitt Ydv — an independent artist, AI creator, and web developer from India. I love building modern websites, experimenting with artificial intelligence, and creating unique digital experiences.",
+    "Hi, I'm Mitt Ydv — an independent artist, AI creator, and web developer from India. I create modern websites, AI-powered content, and digital experiences that combine creativity with technology.",
 
-    "From music production and cinematic AI visuals to full-stack web development, I enjoy turning creative ideas into reality. Every project is an opportunity to learn, innovate, and create something memorable.",
+    "I'm passionate about web development, artificial intelligence, music, and open-source projects. I enjoy turning ideas into beautiful, fast, and user-friendly products.",
 
-    "Welcome to my digital space. Explore my work, connect with me, and let's build something amazing together.",
+    "Thanks for visiting my portfolio. Feel free to explore my work and connect with me through any of the platforms below.",
   ],
 
   email: "nopaidorganization@gmail.com",
@@ -28,19 +27,31 @@ export const PROFILE = {
 
 export const SOCIALS = [
   {
-    label: "instagram",
+    label: "Instagram",
     display: "@mitt_ydv",
     href: "https://instagram.com/mitt_ydv",
-    hint: "Music • AI • Lifestyle",
+    hint: "Follow me on Instagram",
   },
   {
-    label: "telegram",
+    label: "Telegram",
     display: "@mitt_ydv",
     href: "https://t.me/mitt_ydv",
-    hint: "Community & Updates",
+    hint: "Join my Telegram",
   },
   {
-    label: "email",
+    label: "GitHub",
+    display: "royak47",
+    href: "https://github.com/royak47",
+    hint: "View my projects",
+  },
+  {
+    label: "YouTube",
+    display: "@MittYdv",
+    href: "https://youtube.com/@MittYdv",
+    hint: "Watch my videos",
+  },
+  {
+    label: "Email",
     display: "nopaidorganization@gmail.com",
     href: "mailto:nopaidorganization@gmail.com",
     hint: "Business & Collaborations",
